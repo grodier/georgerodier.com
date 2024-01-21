@@ -1,8 +1,9 @@
+console.log(localStorage.getItem("theme"));
 let currentTheme =
   localStorage.getItem("theme") ||
-  window.matchMedia("(prefers-color-scheme: dark)").matches
+  (window.matchMedia("(prefers-color-scheme: dark)").matches
     ? "dark"
-    : "light";
+    : "light");
 
 if (currentTheme === "light") {
   document.documentElement.classList.remove("dark");
