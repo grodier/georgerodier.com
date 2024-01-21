@@ -1,25 +1,20 @@
 ---
+import Container from "./Container/Container.astro";
 import ThemeToggle from "./ThemeToggle.astro";
 import SignatureIcon from "./icons/Signature.astro";
 ---
 
 <header class="pointer-events-none relative flex flex-none flex-col">
-  <div class="py-6 sm:px-8 w-full">
-    <div class="mx-auto w-full max-w-7xl lg:px-8">
-      <div class="relative px-4 sm:px-8 lg:px-12">
-        <div class="mx-auto max-w-2xl lg:max-w-5xl">
-          <div class="relative flex gap-4">
-            <div class="flex flex-1">
-              <SignatureIcon />
-            </div>
-            <div class="flex justify-end md:flex-1">
-              <div class="pointer-events-auto">
-                <ThemeToggle />
-              </div>
-            </div>
-          </div>
+  <Container class="py-6 w-full">
+    <div class="relative flex gap-4">
+      <div class="flex flex-1">
+        <SignatureIcon />
+      </div>
+      <div class="flex justify-end md:flex-1">
+        <div class="pointer-events-auto">
+          <ThemeToggle />
         </div>
       </div>
     </div>
-  </div>
+  </Container>
 </header>
