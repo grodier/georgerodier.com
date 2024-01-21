@@ -1,7 +1,23 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+import { getCollection } from "astro:content";
+import { sortedTimeDescending } from "@utils/postUtils.js";
+let posts = await getCollection("posts");
+let sortedPosts = sortedTimeDescending(posts);
 ---
 
 <Layout>
   <h1>George Rodier</h1>
+  <ul>
+    {
+      sortedPosts.map(({ data, slug }) => (
+        <div>
+          <span>{data.title}</span>
+          {slug}
+          <span />
+        </div>
+      ))
+    }
+  </ul>
 </Layout>
