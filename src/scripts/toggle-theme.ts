@@ -1,4 +1,3 @@
-console.log(localStorage.getItem("theme"));
 let currentTheme =
   localStorage.getItem("theme") ||
   (window.matchMedia("(prefers-color-scheme: dark)").matches
