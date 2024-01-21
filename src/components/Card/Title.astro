@@ -1,0 +1,19 @@
+---
+import Link from "./Link.astro";
+let { href, asElement } = Astro.props;
+let Element = asElement || "h2"
+---
+
+<Element
+  class="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100"
+>
+  {
+    href ? (
+      <Link href={href}>
+        <slot />
+      </Link>
+    ) : (
+      <slot />
+    )
+  }
+</Element>

@@ -1,0 +1,40 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+import Card from "@components/Card/Card.astro";
+import CardTitle from "@components/Card/Title.astro";
+import CardEyebrow from "@components/Card/Eyebrow.astro";
+import CardDescription from "@components/Card/Description.astro";
+import CardCta from "@components/Card/Cta.astro";
+
+import { formatDate } from "@utils/timeUtils.js";
+
+export type Props = { article: CollectionEntry<"posts"> };
+
+let { article } = Astro.props;
+---
+
+<article class="md:grid md:grid-cols-4 md:items-baseline">
+  <Card class="md:col-span-3">
+    <CardTitle href={`/posts/${article.slug}`}>
+      {article.data.title}
+    </CardTitle>
+    <CardEyebrow
+      asElement="time"
+      dateTime={article.data.pubDate}
+      class="md:hidden"
+      decorate
+    >
+      {formatDate(article.data.pubDate)}
+    </CardEyebrow>
+    <CardDescription>{article.data.description}</CardDescription>
+    <CardCta>Read Post</CardCta>
+  </Card>
+  <CardEyebrow
+    asElement="time"
+    dateTime={article.data.pubDate}
+    class="mt-1 hidden md:block"
+  >
+    {formatDate(article.data.pubDate)}
+  </CardEyebrow>
+</article>
