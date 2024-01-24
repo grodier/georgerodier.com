@@ -1,5 +1,18 @@
 ---
 import Main from "@layouts/Main.astro";
+
+let {
+  title = "George Rodier",
+  description = "The writings, thoughts, projects, and more from George Rodier",
+  author = "George Rodier",
+  ogImage,
+} = Astro.props;
+
+let socialImageURL = ogImage
+  ? new URL(ogImage, Astro.url.origin).href
+  : undefined;
+
+let siteURL = new URL(Astro.url.pathname, Astro.url.origin).href;
 ---
 
 <html lang="en" class="h-full antialiased">
@@ -8,7 +21,22 @@ import Main from "@layouts/Main.astro";
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>George Rodier</title>
+
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="author" content={author} />
+
+    {
+      socialImageURL && (
+        <>
+          <meta property="og:title" content={title} />
+          <meta property="og:description" content={description} />
+          <meta property="og:url" content={siteURL} />
+          <meta property="og:image" content={socialImageURL} />
+        </>
+      )
+    }
   </head>
   <body class="flex h-full bg-zinc-50 dark:bg-black">
     <div class="flex w-full">

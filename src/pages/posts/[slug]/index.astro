@@ -4,20 +4,26 @@ import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container/Container.astro";
 import ArrowLeftIcon from "@components/icons/ArrowLeftIcon.astro";
 import { formatDate } from "@utils/timeUtils";
+import { slugifyStr } from "@utils/slugify";
 
 export async function getStaticPaths() {
-  const blogEntries = await getCollection("posts");
-  return blogEntries.map((entry) => ({
-    params: { slug: entry.slug },
-    props: { entry },
+  let postEntries = await getCollection("posts");
+  return postEntries.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
   }));
 }
 
-const { entry } = Astro.props;
-const { Content } = await entry.render();
+let { post } = Astro.props;
+
+let { title, author, description, pubDate } = post.data;
+
+let ogUrl = new URL(`/posts/${slugifyStr(title)}.png`, Astro.url.origin).href;
+
+let { Content } = await post.render();
 ---
 
-<Layout>
+<Layout title={title} author={author} description={description} ogImage={ogUrl}>
   <Container class="mt-12 sm:mt-28">
     <div class="xl:relative">
       <div class="mx-auto max-w-2xl">
@@ -36,15 +42,15 @@ const { Content } = await entry.render();
             <h1
               class="mt-6 text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100"
             >
-              {entry.data.title}
+              {title}
             </h1>
             <time
-              datetime={entry.data.pubDate.toDateString()}
+              datetime={pubDate.toDateString()}
               class="order-first flex items-center text-base text-zinc-400 dark:text-zinc-500"
             >
               <span class="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500"
               ></span>
-              <span class="ml-3">{formatDate(entry.data.pubDate)}</span>
+              <span class="ml-3">{formatDate(pubDate)}</span>
             </time>
           </header>
           <div class="mt-8 prose dark:prose-invert">
