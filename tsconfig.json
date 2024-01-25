@@ -2,7 +2,7 @@
   "extends": "astro/tsconfigs/base",
   "compilerOptions": {
     "strictNullChecks": true,
-    "baseUrl": "/Users/grodier/Code/github.com/grodier/georgerodier.com",
+    "baseUrl": ".",
     "jsx": "react-jsx",
     "paths": {
       "@assets/*": ["src/assets/*"],
