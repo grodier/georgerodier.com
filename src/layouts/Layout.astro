@@ -8,9 +8,7 @@ let {
   ogImage,
 } = Astro.props;
 
-let socialImageURL = ogImage
-  ? new URL(ogImage, Astro.url.origin).href
-  : undefined;
+let socialImageURL = new URL(ogImage ?? "og.png", Astro.url.origin).href;
 
 let siteURL = new URL(Astro.url.pathname, Astro.url.origin).href;
 ---
@@ -27,16 +25,10 @@ let siteURL = new URL(Astro.url.pathname, Astro.url.origin).href;
     <meta name="description" content={description} />
     <meta name="author" content={author} />
 
-    {
-      socialImageURL && (
-        <>
-          <meta property="og:title" content={title} />
-          <meta property="og:description" content={description} />
-          <meta property="og:url" content={siteURL} />
-          <meta property="og:image" content={socialImageURL} />
-        </>
-      )
-    }
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={siteURL} />
+    <meta property="og:image" content={socialImageURL} />
   </head>
   <body class="flex h-full bg-zinc-50 dark:bg-black">
     <div class="flex w-full">
