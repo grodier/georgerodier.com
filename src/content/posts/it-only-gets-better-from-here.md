@@ -8,11 +8,11 @@ tags: ["post", "success"]
 
 I've been thinking a lot about success in different contexts, what success means, and how to achieve it. One of the most common characteristics I've observed amongst "successful" people is showing up and putting in the effort.
 
-Want to become rich? Invest your money in index funds and let them compound over time. Want to get strong in the gym? Show up consistently week in and week out for multiple years and use progressive enhancement. Want to be a better employee? Continually learn and work hard at your craft. The growth you seeing looking in the rearview will astonish you.
+Want to become rich? Invest your money in index funds and let them compound over time. Want to get strong in the gym? Show up consistently week in and week out for multiple years and use progressive enhancement. Want to be a better employee? Continually learn and work hard at your craft. The growth you'll see looking in the rearview will astonish you.
 
 Quick wins are rare. Continual improvement over time always wins out.
 
-I share this, because I feel it is the only appropriate mindset to have when writing a first post. There is a recognition that this isn't the final product. I have so many ideas that I want to explore and share (technology, writing, building, ambition, motivation, pragmatism, frameworks, cooking, software, and more). By continually showing up and writing, day in and day out over many years, I'll be able to find my voice, my writing interests, and hone my craft.
+I share this, because I feel it is the only appropriate mindset to have when writing a first post. There is a recognition that this isn't the final product. I have so many ideas that I want to explore and share (technology, writing, building, ambition, motivation, pragmatism, frameworks, cooking, software, and more). By continually showing up and writing, day in and day out over many years, I'll be able to find my voice, pull at the threads of my writing interests, and hone my craft.
 
 > What can you control today? What can you start with right now?
 
