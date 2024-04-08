@@ -1,7 +1,7 @@
 ---
 title: "The Years of Experience Myth"
 pubDate: 2024-04-08
-description: ""
+description: '"Years of experience" is only a measure of the time a job was performed. It is not a causation of the experience you gained over that time'
 author: "George Rodier"
 tags: ["post", "experience"]
 ---
