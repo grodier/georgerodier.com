@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container/Container.astro";
+import ArticleCTA from "@components/ArticleCTA.astro";
 import ArrowLeftIcon from "@components/icons/ArrowLeftIcon.astro";
 import { formatDate } from "@utils/timeUtils";
 import { slugifyStr } from "@utils/slugify";
@@ -16,7 +17,8 @@ export async function getStaticPaths() {
 
 let { post } = Astro.props;
 
-let { title, author, description, pubDate } = post.data;
+let { title, author, description, pubDate, ctaTitle, ctaDescription } =
+  post.data;
 
 let ogUrl = new URL(`/posts/${slugifyStr(title)}.png`, Astro.url.origin).href;
 
@@ -58,18 +60,7 @@ let { Content } = await post.render();
           </div>
         </article>
         <div class="mt-16">
-          <div class="hidden dark:block">
-            <script
-              async
-              data-uid="95f605e15f"
-              src="https://georgerodier.ck.page/95f605e15f/index.js"></script>
-          </div>
-          <div class="dark:hidden">
-            <script
-              async
-              data-uid="a3ba51ea9d"
-              src="https://georgerodier.ck.page/a3ba51ea9d/index.js"></script>
-          </div>
+          <ArticleCTA heading={ctaTitle} description={ctaDescription} />
         </div>
       </div>
     </div>

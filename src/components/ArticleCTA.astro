@@ -1,0 +1,51 @@
+---
+let { heading, description } = Astro.props;
+---
+
+{
+  heading || description ? (
+    <div class="rounded-md bg-teal-400/50 dark:bg-zinc-700 p-8">
+      {heading && (
+        <h2 class="text-4xl text-center font-bold text-black dark:text-zinc-100">
+          {heading}
+        </h2>
+      )}
+      {description && (
+        <p class="mt-2 text-lg text-black dark:text-zinc-200">{description}</p>
+      )}
+      <div class="mt-6">
+        <div class="dark:hidden">
+          <script
+            async
+            data-uid="7367a08502"
+            src="https://georgerodier.ck.page/7367a08502/index.js"
+          />
+        </div>
+        <div class="hidden dark:block">
+          <script
+            async
+            data-uid="b43e96616f"
+            src="https://georgerodier.ck.page/b43e96616f/index.js"
+          />
+        </div>
+      </div>
+    </div>
+  ) : (
+    <>
+      <div class="hidden dark:block">
+        <script
+          async
+          data-uid="95f605e15f"
+          src="https://georgerodier.ck.page/95f605e15f/index.js"
+        />
+      </div>
+      <div class="dark:hidden">
+        <script
+          async
+          data-uid="a3ba51ea9d"
+          src="https://georgerodier.ck.page/a3ba51ea9d/index.js"
+        />
+      </div>
+    </>
+  )
+}

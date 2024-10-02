@@ -8,6 +8,8 @@ let posts = defineCollection({
     title: z.string(),
     tags: z.array(z.string()).optional(),
     description: z.string(),
+    ctaTitle: z.string().optional(),
+    ctaDescription: z.string().optional(),
   }),
 });
 
