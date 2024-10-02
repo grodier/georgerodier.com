@@ -11,6 +11,7 @@ let {
 let socialImageURL = new URL(ogImage ?? "og.png", Astro.url.origin).href;
 
 let siteURL = new URL(Astro.url.pathname, Astro.url.origin).href;
+let isProd = import.meta.env.PROD;
 ---
 
 <html lang="en" class="h-full antialiased">
@@ -36,8 +37,15 @@ let siteURL = new URL(Astro.url.pathname, Astro.url.origin).href;
     <meta property="twitter:image" content={socialImageURL} />
 
     <!-- Fathom - beautiful, simple website analytics -->
-    <script src="https://cdn.usefathom.com/script.js" data-site="READTHHM" defer
-    ></script>
+    {
+      isProd && (
+        <script
+          src="https://cdn.usefathom.com/script.js"
+          data-site="READTHHM"
+          defer
+        />
+      )
+    }
     <!-- / Fathom -->
   </head>
   <body class="flex h-full bg-zinc-50 dark:bg-black">
