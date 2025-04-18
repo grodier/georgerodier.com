@@ -1,7 +1,7 @@
 ---
 title: "Overcoming Goodhart's Law"
 pubDate: 2025-04-17
-description: "'When a metric becomes a target, we've walked into a trap known as Goodhart's Law. Luckily this trap can be avoided. I'll show you how!"
+description: "When a metric becomes a target, we've walked into a trap known as Goodhart's Law. Luckily this trap can be avoided. I'll show you how!"
 author: "George Rodier"
 tags: ["post"]
 slug: "overcoming-goodharts-law"
@@ -15,7 +15,7 @@ Congratulations, you've just discovered Goodhart's Law. Luckily, there's still h
 
 ![An illustration of Goodhart's Law demonstrating that when a measure becomes a target, it ceases to be a good measure. It shows that if you measure people on the number of nails made then you might get 1000's of tiny nails, but if you measure people on the weight of nails made, you might get a few giant, heavy nails. There's two pictures under the text. To the left there is a proud worker showing off a mound of miniature nails while the manager is befuddled. To the right, the worker is showing off his three giant human sized nails, while the manager is angry. The image is credited to sketchplanations.](../assets/sketchplanation-goodharts-law.jpg)
 
-Goodhart's Law states, "When a measure becomes a target, it ceases to be a good measure". As soon as we turned the code coverage percentage into the target, we lost sight of the real goal: reducing defects and improving customer satisfaction. Instead, we incentivized developers to maximize coverage (perhaps at all costs).
+Goodhart's Law states, "_When a measure becomes a target, it ceases to be a good measure_". As soon as we turned the code coverage percentage into the target, we lost sight of the real goal: reducing defects and improving customer satisfaction. Instead, we incentivized developers to maximize coverage (perhaps at all costs).
 
 Code coverage is a flawed metric. It tells us ["what you definitely haven't tested, not what you have"](https://stackoverflow.com/a/695888). There's the potential for developers to write code that covers every line without covering every branch. Even more common, in my experience, is testing flawed, already written code without considering the actual test cases. The goal of tests is to give us confidence in the code we're writing. This doesn't mean code coverage is bad. Generally, better code coverage is a positive sign. But on its own, without additional context, it doesn't definitively tell us anything about the quality of our code.
 
