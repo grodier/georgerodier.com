@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container/Container.astro";
 import ArticleCTA from "@components/ArticleCTA.astro";
@@ -10,7 +10,7 @@ import { slugifyStr } from "@utils/slugify";
 export async function getStaticPaths() {
   let postEntries = await getCollection("posts");
   return postEntries.map((post) => ({
-    params: { slug: post.slug },
+    params: { slug: post.id },
     props: { post },
   }));
 }
@@ -22,7 +22,7 @@ let { title, author, description, pubDate, ctaTitle, ctaDescription } =
 
 let ogUrl = new URL(`/posts/${slugifyStr(title)}.png`, Astro.url.origin).href;
 
-let { Content } = await post.render();
+let { Content } = await render(post);
 ---
 
 <Layout title={title} author={author} description={description} ogImage={ogUrl}>

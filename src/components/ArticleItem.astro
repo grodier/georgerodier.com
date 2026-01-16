@@ -16,7 +16,7 @@ let { article } = Astro.props;
 
 <article class="md:grid md:grid-cols-4 md:items-baseline">
   <Card class="md:col-span-3">
-    <CardTitle href={`/posts/${article.slug}`}>
+    <CardTitle href={`/posts/${article.id}`}>
       {article.data.title}
     </CardTitle>
     <CardEyebrow
