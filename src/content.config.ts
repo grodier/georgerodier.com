@@ -1,7 +1,8 @@
 import { z, defineCollection } from "astro:content";
+import { glob } from "astro/loaders";
 
 let posts = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/[^_]*.md", base: "./src/content/posts" }),
   schema: z.object({
     author: z.string().default("George Rodier"),
     pubDate: z.date(),
