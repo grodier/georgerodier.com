@@ -1,0 +1,183 @@
+@layer reset {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+  }
+
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  p,
+  figure,
+  blockquote,
+  dl,
+  dd {
+    margin: 0;
+  }
+
+  [role="list"] {
+    list-style: none;
+  }
+
+  body {
+    min-block-size: 100vh;
+    line-height: 1.5;
+  }
+
+  h1,
+  h2,
+  h3,
+  button,
+  input,
+  label {
+    line-height: 1.1;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
+
+  p,
+  li {
+    text-wrap: pretty;
+  }
+
+  img,
+  picture {
+    max-inline-size: 100%;
+    display: block;
+  }
+
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  textarea:not([rows]) {
+    min-height: 10em;
+  }
+}
+
+@layer base {
+  :root {
+    --clr-white: hsl(0 0% 100%);
+    --clr-black: hsl(0 0% 0%);
+    --clr-cream: hsl(45 28% 85%);
+
+    --clr-red-500: hsl(2 78% 59%);
+    --clr-blue-500: hsl(220 90% 56%);
+    --clr-green-500: hsl(145 63% 49%);
+    --clr-orange-500: hsl(36 100% 57%);
+    --clr-purple-500: hsl(259 100% 65%);
+
+    --background-primary: var(--clr-cream);
+  }
+
+  body {
+    background-color: var(--background-primary);
+  }
+}
+
+@layer components {
+  .container {
+    --container-max-width: 1200px;
+    --container-padding: 1rem;
+
+    max-width: var(--container-max-width);
+    margin-inline: auto;
+    padding-inline: var(--container-padding);
+  }
+
+  .widget-bento-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .widget-card {
+    --widget-bg-color: var(--clr-red-500);
+    --dodgeball-tile: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' fill='transparent'/%3E%3Cg fill='black'%3E%3Cg transform='translate(0 0)'%3E%3Crect x='0' y='2' width='24' height='4' rx='2'/%3E%3Crect x='0' y='7' width='24' height='4' rx='2'/%3E%3Crect x='0' y='12' width='24' height='4' rx='2'/%3E%3Crect x='0' y='17' width='24' height='4' rx='2'/%3E%3C/g%3E%3Cg transform='translate(24 0)'%3E%3Crect x='2' y='0' width='4' height='24' rx='2'/%3E%3Crect x='7' y='0' width='4' height='24' rx='2'/%3E%3Crect x='12' y='0' width='4' height='24' rx='2'/%3E%3Crect x='17' y='0' width='4' height='24' rx='2'/%3E%3C/g%3E%3Cg transform='translate(0 24)'%3E%3Crect x='2' y='0' width='4' height='24' rx='2'/%3E%3Crect x='7' y='0' width='4' height='24' rx='2'/%3E%3Crect x='12' y='0' width='4' height='24' rx='2'/%3E%3Crect x='17' y='0' width='4' height='24' rx='2'/%3E%3C/g%3E%3Cg transform='translate(24 24)'%3E%3Crect x='0' y='2' width='24' height='4' rx='2'/%3E%3Crect x='0' y='7' width='24' height='4' rx='2'/%3E%3Crect x='0' y='12' width='24' height='4' rx='2'/%3E%3Crect x='0' y='17' width='24' height='4' rx='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    --bg-scale: 14px;
+    --bg-contrast: 0.12;
+    --bg-offset-x: 3px;
+    --bg-offset-y: 2px;
+    --bg-sheen: 0.1;
+    --bg-vignetter: 0.14;
+
+    background: var(--widget-bg-color);
+    position: relative;
+    color: var(--clr-white);
+    padding: 2rem;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+
+      background-image: var(--dodgeball-tile), var(--dodgeball-tile);
+      background-repeat: repeat, repeat;
+      background-size:
+        var(--bg-scale) var(--bg-scale),
+        var(--bg-scale) var(--bg-scale);
+      background-position:
+        0 0,
+        var(--bg-offset-x) var(--bg-offset-y);
+
+      opacity: var(--bg-contrast);
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+
+      background:
+        radial-gradient(
+          120% 90% at 20% 10%,
+          rgba(255, 255, 255, var(--bg-sheen)),
+          transparent 55%
+        ),
+        radial-gradient(
+          140% 140% at 50% 60%,
+          transparent 55%,
+          rgba(0, 0, 0, var(--bg-vignette)) 100%
+        );
+    }
+
+    &[data-bg="red"] {
+      --widget-bg-color: var(--clr-red-500);
+    }
+
+    &[data-bg="blue"] {
+      --widget-bg-color: var(--clr-blue-500);
+    }
+
+    &[data-bg="green"] {
+      --widget-bg-green: var(--clr-green-500);
+    }
+
+    &[data-bg="orange"] {
+      --widget-bg-color: var(--clr-orange-500);
+    }
+
+    &[data-bg="purple"] {
+      --widget-bg-color: var(--clr-purple-500);
+    }
+  }
+}

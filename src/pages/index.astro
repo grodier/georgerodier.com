@@ -1,52 +1,44 @@
 ---
-import { Image } from "astro:assets";
-import Layout from "@layouts/Layout.astro";
-import Container from "@components/Container/Container.astro";
-import ArticleItem from "@components/ArticleItem.astro";
-import profileImg from "@images/IMG_3781.jpeg";
-
-import { getCollection } from "astro:content";
-import { sortedTimeDescending } from "@utils/postUtils.js";
-let posts = await getCollection("posts");
-let sortedPosts = sortedTimeDescending(posts);
+import "../styles/home.css"
 ---
 
-<Layout>
-  <Container class="mt-12 sm:mt-28">
-    <header
-      class="max-w-5xl grid grid-cols-1 gap-y-16 lg:gap-y-12 lg:grid-cols-2"
-    >
-      <div class="lg:pl-20">
-        <div class="max-w-xs px-2.5 lg:max-w-sm">
-          <Image
-            src={profileImg}
-            alt="George Rodier sitting on his front porch with his dog."
-            class="aspect-square rotate-3 rounded-2xl bg-zinc-100 object-cover dark:bg-zinc-800"
-          />
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>George Rodier</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="widget-bento-grid">
+        <div class="widget-card">
+          <div>George Rodier</div>
+          <div>About</div>
         </div>
-      </div>
-      <div class="lg:order-first flex flex-col justify-center">
-        <h1
-          class="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100"
-        >
-          George Rodier
-        </h1>
-        <p class="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-          This is a place to explore everything that interests me as I find my
-          writing voice and hone my craft. Expect posts on technology, writing,
-          building, ambition, pragmatism, frameworks, cooking, software, and
-          more.
-        </p>
-      </div>
-    </header>
-    <div class="mt-16 sm:mt-20">
-      <div
-        class="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40"
-      >
-        <div class="flex max-w-3xl flex-col space-y-16">
-          {sortedPosts.map((article) => <ArticleItem article={article} />)}
+        <div class="widget-card">
+          Music
+        </div>
+        <div class="widget-card">
+          Github
+        </div>
+        <div class="widget-card">
+          Resume
+        </div>
+        <div class="widget-card">
+          Latest Article
+        </div>
+        <div class="widget-card">
+          Latest post
+        </div>
+        <div class="widget-card">
+          Subsribe
+        </div>
+        <div class="widget-card">
+          Random Portfolio
         </div>
       </div>
     </div>
-  </Container>
-</Layout>
+  </body>
+</html>
