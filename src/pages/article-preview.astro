@@ -1,0 +1,66 @@
+---
+import { getCollection, render } from "astro:content";
+import { Font } from "astro:assets";
+import "../styles/home.css";
+import "../styles/article.css";
+import { formatDate } from "@utils/timeUtils";
+
+// Get a sample post to display
+let postEntries = await getCollection("posts");
+let post = postEntries.find(p => p.data.title.toLowerCase().includes("goodhart")) || postEntries[0];
+
+let { title, author, description, pubDate, ctaTitle, ctaDescription } = post.data;
+let { Content } = await render(post);
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <Font cssVariable="--font-synonym" preload />
+    <!-- Google Fonts - Lora for body text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <title>{title} | George Rodier</title>
+  </head>
+  <body>
+    <!-- Site Header -->
+    <header class="site-header">
+      <div class="container header-container">
+        <a href="/" class="site-name">George Rodier</a>
+        <nav class="site-nav">
+          <a href="/posts" class="nav-link">Blog</a>
+          <a href="/subscribe" class="nav-link">Subscribe</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container article-container">
+      <!-- Article -->
+      <article class="article">
+        <header class="article-header">
+          <time datetime={pubDate.toISOString()} class="article-date">
+            {formatDate(pubDate)}
+          </time>
+          <h1 class="article-title">{title}</h1>
+        </header>
+
+        <div class="article-content">
+          <Content />
+        </div>
+      </article>
+
+      <!-- CTA Card - uses the widget card style -->
+      {ctaTitle && (
+        <div class="cta-card widget-card" data-bg="green">
+          <h2 class="cta-title">{ctaTitle}</h2>
+          <p class="cta-description">{ctaDescription}</p>
+          <a href="/subscribe" class="cta-button">Subscribe</a>
+        </div>
+      )}
+
+    </main>
+  </body>
+</html>
