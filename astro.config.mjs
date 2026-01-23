@@ -26,6 +26,19 @@ export default defineConfig({
           "Noto Color Emoji",
         ],
       },
+      {
+        provider: fontProviders.fontshare(),
+        name: "Lora",
+        cssVariable: "--font-lora",
+        fallbacks: [
+          "ui-serif",
+          "Georgia",
+          "Cambria",
+          "Times New Roman",
+          "Times",
+          "serif",
+        ],
+      },
     ],
   },
 });
