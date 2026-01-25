@@ -427,11 +427,18 @@
 
   .profile-card {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 2rem;
 
     .heading {
       font-size: var(--font-size-heading-lg);
       text-align: center;
+    }
+
+    @media (width > 600px) {
+      flex-direction: row;
+      gap: 3rem;
     }
   }
 
@@ -440,12 +447,16 @@
     --depth-shadow: 0 6px 14px rgba(0, 0, 0, 0.16);
     object-fit: cover;
     aspect-ratio: 1 / 1;
-    width: 50%;
+    width: 100%;
     height: auto;
     border-radius: 12px;
     box-shadow:
       0 0 0 var(--outline-width) var(--clr-purple-700),
       var(--depth-shadow);
+
+    @media (width > 600px) {
+      width: 50%;
+    }
   }
 
   .icon {
