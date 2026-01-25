@@ -19,16 +19,18 @@ let sortedPosts = sortedTimeDescending(posts)
     <Font cssVariable="--font-lora" preload />
     <title>Blog | George Rodier</title>
   </head>
-  <body class="flow">
-    <header class="container site-header">
-      <a class="site-name" href="/">George Rodier</a>
-      <nav class="site-nav">
-        <a href="/posts">Blog</a>
-        <a href="/subscribe">Subscribe</a>
-      </nav>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a class="site-name" href="/">George Rodier</a>
+        <nav class="site-nav">
+          <a href="/posts">Blog</a>
+          <a href="/subscribe">Subscribe</a>
+        </nav>
+      </div>
     </header>
 
-    <main class="container flow">
+    <main class="container flow" data-container="narrow">
       <header class="page-header">
         <h1>Blog</h1>
         <p>Thoughts on software engineering, building products, and delivering value.</p>

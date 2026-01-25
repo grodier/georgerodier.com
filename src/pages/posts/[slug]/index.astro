@@ -3,7 +3,6 @@ import { getCollection, render } from "astro:content";
 import { Font } from "astro:assets";
 import "../../../styles/home.css";
 import { formatDate } from "@utils/timeUtils";
-import { slugifyStr } from "@utils/slugify";
 
 export async function getStaticPaths() {
   let postEntries = await getCollection("posts");
@@ -14,7 +13,7 @@ export async function getStaticPaths() {
 }
 
 let { post } = Astro.props;
-let { title, author, description, pubDate, ctaTitle, ctaDescription } = post.data;
+let { title, pubDate } = post.data;
 
 
 let { Content } = await render(post);
@@ -26,27 +25,31 @@ let { Content } = await render(post);
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
     <Font cssVariable="--font-synonym" preload />
+    <Font cssVariable="--font-lora" preload />
     <title>{title} | George Rodier</title>
   </head>
+
   <body>
-    <header>
-      <a href="/">George Rodier</a>
-      <nav>
-        <a href="/posts">Blog</a>
-        <a href="/subscribe">Subscribe</a>
-      </nav>
+    <header class="site-header">
+      <div class="container">
+        <a class="site-name" href="/">George Rodier</a>
+        <nav class="site-nav">
+          <a href="/posts">Blog</a>
+          <a href="/subscribe">Subscribe</a>
+        </nav>
+      </div>
     </header>
 
-    <main>
-      <article>
-        <header>
-          <h1>{title}</h1>
-          <time datetime={pubDate.toISOString()}>
+    <main class="container" data-container="narrow">
+      <article class="article flow">
+        <header class="article-header flow">
+          <time class="article-date" datetime={pubDate.toISOString()}>
             {formatDate(pubDate)}
           </time>
+          <h1 class="article-title">{title}</h1>
         </header>
 
-        <div>
+        <div class="article-content">
           <Content />
         </div>
       </article>
