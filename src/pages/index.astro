@@ -1,7 +1,14 @@
 ---
 import {Image, Font} from "astro:assets"
+import { getCollection } from "astro:content";
 import "../styles/home.css"
 import profilePic from "@images/LH_profile_square.jpg"
+import {sortedTimeDescending} from "@utils/postUtils"
+
+let posts = await getCollection("posts");
+let sortedPosts = sortedTimeDescending(posts);
+
+let latestPost = sortedPosts[0];
 ---
 
 <html lang="en">
@@ -38,9 +45,14 @@ import profilePic from "@images/LH_profile_square.jpg"
           </div>
           <h2>Subscribe</h2>
         </a>
-        <div class="widget-card center" data-bg="blue">
-          <h2>Latest Article</h2>
-        </div>
+        <a href={`/posts/${latestPost.id}`} class="widget-card latest-post-card" data-bg="blue">
+          <span class="latest-label">Latest Article</span>
+          <div class="latest-content">
+            <h2 class="latest-title">{latestPost.data.title}</h2>
+            <p class="latest-description">{latestPost.data.description}</p>
+          </div>
+          <span class="read-more">Read more →</span>
+        </a>
         <a href="https://github.com/grodier" target="_blank" rel="noopener noreferrer" class="widget-card center" data-bg="green">
           <div class="icon">
             <svg viewBox="0 0 98 96" fill="none" xmlns="http://www.w3.org/2000/svg">
