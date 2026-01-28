@@ -517,12 +517,10 @@
     .latest-description {
       font-family: var(--ff-regular);
       font-size: var(--font-size-regular);
-      line-height: 1.5;
       opacity: 0.9;
 
       @media (width > 600px) {
         font-size: var(--font-size-md);
-        line-height: 1.6;
       }
     }
 
@@ -789,6 +787,35 @@
       background: none;
       padding: 0;
       color: inherit;
+    }
+  }
+
+  .subscribe-card {
+    --flow-space: 1.5rem;
+    font-family: var(--ff-regular);
+    text-align: center;
+
+    h1 {
+      font-size: var(--font-size-heading-regular);
+
+      @media (width > 600px) {
+        font-size: var(--font-size-heading-lg);
+      }
+    }
+
+    p {
+      font-size: var(--font-size-regular);
+
+      @media (width > 600px) {
+        font-size: var(--font-size-md);
+      }
+    }
+
+    button {
+      font-family: var(--ff-heading);
+      font-size: var(--font-size-md);
+      font-weight: 600;
+      color: var(--clr-white);
     }
   }
 }

@@ -1,28 +1,39 @@
 ---
-import Layout from "@layouts/Layout.astro";
-import Container from "@components/Container/Container.astro";
+import { Font } from "astro:assets";
+import "../../styles/home.css";
 ---
 
-<Layout>
-  <Container class="mt-12 sm:mt-28">
-    <div class="mx-auto max-w-2xl">
-      <div class="flex flex-col">
-        <h1
-          class="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100"
-        >
-          Subscribe
-        </h1>
-        <p class="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-          Subscribe to my newsletter to get updates on new posts, projects, and
-          more.
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <Font cssVariable="--font-synonym" preload />
+    <Font cssVariable="--font-lora" preload />
+    <title>Subscribe | George Rodier</title>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a class="site-name" href="/">George Rodier</a>
+        <nav class="site-nav">
+          <a href="/posts">Blog</a>
+          <a href="/subscribe">Subscribe</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container" data-container="narrow">
+      <div class="subscribe-card widget-card flow" data-bg="green">
+        <h1>Stay in the Loop</h1>
+        <p>
+          Follow my weekly newsletter where I'll give updates on articles I'm writing, projects I'm working on, my insights on being pragmatic and delivering value, and a whole lot more. All with my patented personal touch!
         </p>
-        <div class="mt-6">
-          <script
-            async
-            data-uid="7367a08502"
-            src="https://georgerodier.ck.page/7367a08502/index.js"></script>
+        <div>
+          <script async data-uid="1429ce7060" src="https://georgerodier.kit.com/1429ce7060/index.js"></script>
         </div>
       </div>
-    </div>
-  </Container>
-</Layout>
+    </main>
+  </body>
+</html>
