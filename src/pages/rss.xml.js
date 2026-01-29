@@ -1,11 +1,8 @@
 import rss from "@astrojs/rss";
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import { transform, walk } from "ultrahtml";
-import sanitizeHtml from "sanitize-html";
-import MarkdownIt from "markdown-it";
 import { sortedTimeDescending } from "@utils/postUtils";
-
-const parser = new MarkdownIt();
+import { experimental_AstroContainer as AstroContainer } from "astro/container";
 
 function isRelativeURL(path) {
   try {
@@ -18,15 +15,15 @@ function isRelativeURL(path) {
 
 // Implmentation inspired by https://github.com/delucis/astro-blog-full-text-rss/blob/latest/src/pages/rss.xml.ts
 export async function GET(context) {
+  const container = await AstroContainer.create();
   const posts = await getCollection("posts");
   const sortedPosts = sortedTimeDescending(posts);
   const items = await Promise.all(
     sortedPosts.map(async (post) => {
-      const initSanitizedContent = sanitizeHtml(parser.render(post.body), {
-        allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
-      });
+      const { Content } = await render(post);
+      const rawContent = await container.renderToString(Content);
 
-      const content = await transform(initSanitizedContent, [
+      const content = await transform(rawContent, [
         async (node) => {
           await walk(node, (node) => {
             if (node.name === "img" && isRelativeURL(node.attributes.src)) {
