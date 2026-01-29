@@ -16,6 +16,7 @@ function isRelativeURL(path) {
   }
 }
 
+// Implmentation inspired by https://github.com/delucis/astro-blog-full-text-rss/blob/latest/src/pages/rss.xml.ts
 export async function GET(context) {
   const posts = await getCollection("posts");
   const sortedPosts = sortedTimeDescending(posts);
