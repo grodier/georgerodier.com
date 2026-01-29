@@ -4,7 +4,7 @@ import { Font } from "astro:assets";
 import  { formatDate } from "@utils/timeUtils";
 import { sortedTimeDescending } from "@utils/postUtils";
 
-import "../../styles/home.css";
+import "../../styles/styles.css";
 
 let posts = await getCollection("posts")
 let sortedPosts = sortedTimeDescending(posts)
