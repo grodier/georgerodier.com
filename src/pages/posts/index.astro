@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import { Font } from "astro:assets";
-import  {formatDate } from "@utils/timeUtils";
+import  { formatDate } from "@utils/timeUtils";
 import { sortedTimeDescending } from "@utils/postUtils";
 
 import "../../styles/home.css";
@@ -17,6 +17,12 @@ let sortedPosts = sortedTimeDescending(posts)
     <meta name="generator" content={Astro.generator} />
     <Font cssVariable="--font-synonym" preload />
     <Font cssVariable="--font-lora" preload />
+    <link 
+      rel="alternate"
+      type="application/rss+xml"
+      title="George Rodier's blog"
+      href={new URL("rss.xml", Astro.site)}
+    />
     <title>Blog | George Rodier</title>
   </head>
   <body>
