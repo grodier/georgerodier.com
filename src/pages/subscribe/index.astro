@@ -1,6 +1,8 @@
 ---
 import { Font } from "astro:assets";
 import "../../styles/styles.css";
+
+const isProd = import.meta.env.PROD;
 ---
 
 <html lang="en">
@@ -19,6 +21,17 @@ import "../../styles/styles.css";
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <title>Subscribe | George Rodier</title>
+    <!-- Fathom - beautiful, simple website analytics -->
+    {
+      isProd && (
+        <script
+          src="https://cdn.usefathom.com/script.js"
+          data-site="READTHHM"
+          defer
+        />
+      )
+    }
+    <!-- / Fathom -->
   </head>
 
   <body>
