@@ -9,6 +9,8 @@ let posts = await getCollection("posts");
 let sortedPosts = sortedTimeDescending(posts);
 
 let latestPost = sortedPosts[0];
+
+const isProd = import.meta.env.PROD;
 ---
 
 <html lang="en">
@@ -27,6 +29,17 @@ let latestPost = sortedPosts[0];
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <title>George Rodier</title>
+    <!-- Fathom - beautiful, simple website analytics -->
+    {
+      isProd && (
+        <script
+          src="https://cdn.usefathom.com/script.js"
+          data-site="READTHHM"
+          defer
+        />
+      )
+    }
+    <!-- / Fathom -->
   </head>
   <body>
     <div class="container">

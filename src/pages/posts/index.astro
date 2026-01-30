@@ -8,6 +8,8 @@ import "../../styles/styles.css";
 
 let posts = await getCollection("posts")
 let sortedPosts = sortedTimeDescending(posts)
+
+const isProd = import.meta.env.PROD;
 ---
 
 <html lang="en">
@@ -26,6 +28,17 @@ let sortedPosts = sortedTimeDescending(posts)
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <title>Blog | George Rodier</title>
+    <!-- Fathom - beautiful, simple website analytics -->
+    {
+      isProd && (
+        <script
+          src="https://cdn.usefathom.com/script.js"
+          data-site="READTHHM"
+          defer
+        />
+      )
+    }
+    <!-- / Fathom -->
   </head>
   <body>
     <header class="site-header">
