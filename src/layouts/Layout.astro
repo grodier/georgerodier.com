@@ -1,5 +1,4 @@
 ---
-import "../styles/global.css";
 import Main from "./Main.astro";
 
 let {
@@ -9,7 +8,7 @@ let {
   ogImage,
 } = Astro.props;
 
-let socialImageURL = new URL(ogImage ?? "og.png", Astro.url.origin).href;
+//let socialImageURL = new URL(ogImage ?? "og.png", Astro.url.origin).href;
 
 let siteURL = new URL(Astro.url.pathname, Astro.url.origin).href;
 let isProd = import.meta.env.PROD;
@@ -32,10 +31,10 @@ let isProd = import.meta.env.PROD;
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={siteURL} />
-    <meta property="og:image" content={socialImageURL} />
+    <!-- <meta property="og:image" content={socialImageURL} /> -->
 
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:image" content={socialImageURL} />
+    <!-- <meta property="twitter:image" content={socialImageURL} /> -->
 
     <!-- Fathom - beautiful, simple website analytics -->
     {

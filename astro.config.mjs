@@ -1,4 +1,4 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, fontProviders } from "astro/config";
 import react from "@astrojs/react";
 
 // https://astro.build/config
@@ -9,5 +9,36 @@ export default defineConfig({
     optimizeDeps: {
       exclude: ["@resvg/resvg-js"],
     },
+  },
+  experimental: {
+    fonts: [
+      {
+        provider: fontProviders.fontshare(),
+        name: "Pally",
+        cssVariable: "--font-synonym",
+        fallbacks: [
+          "ui-sans-serif",
+          "system-ui",
+          "sans-serif",
+          "Apple Color Emoji",
+          "Segoe UI Emoji",
+          "Segoe UI Symbol",
+          "Noto Color Emoji",
+        ],
+      },
+      {
+        provider: fontProviders.fontshare(),
+        name: "Lora",
+        cssVariable: "--font-lora",
+        fallbacks: [
+          "ui-serif",
+          "Georgia",
+          "Cambria",
+          "Times New Roman",
+          "Times",
+          "serif",
+        ],
+      },
+    ],
   },
 });

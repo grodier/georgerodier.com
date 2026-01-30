@@ -1,6 +1,13 @@
 ---
+import { getCollection } from "astro:content";
 import { Font } from "astro:assets";
+import  { formatDate } from "@utils/timeUtils";
+import { sortedTimeDescending } from "@utils/postUtils";
+
 import "../../styles/styles.css";
+
+let posts = await getCollection("posts")
+let sortedPosts = sortedTimeDescending(posts)
 ---
 
 <html lang="en">
@@ -18,9 +25,8 @@ import "../../styles/styles.css";
     />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <title>Subscribe | George Rodier</title>
+    <title>Blog | George Rodier</title>
   </head>
-
   <body>
     <header class="site-header">
       <div class="container">
@@ -32,16 +38,25 @@ import "../../styles/styles.css";
       </div>
     </header>
 
-    <main class="container" data-container="narrow">
-      <div class="subscribe-card widget-card flow" data-bg="green">
-        <h1>Stay in the Loop</h1>
-        <p>
-          Follow my weekly newsletter where I'll give updates on articles I'm writing, projects I'm working on, my insights on being pragmatic and delivering value, and a whole lot more. All with my patented personal touch!
-        </p>
-        <div>
-          <script async data-uid="1429ce7060" src="https://georgerodier.kit.com/1429ce7060/index.js"></script>
-        </div>
-      </div>
+    <main class="container flow" data-container="narrow">
+      <header class="page-header">
+        <h1>Blog</h1>
+        <p>Thoughts on software engineering, building products, and delivering value.</p>
+      </header>
+
+      <ul class="post-list" role="list">
+        {sortedPosts.map((post) => (
+          <li>
+            <a class="post-link flow" href={`/posts/${post.id}`}>
+              <time datetime={post.data.pubDate.toISOString()}>
+          {formatDate(post.data.pubDate)}
+              </time>
+              <h2>{post.data.title}</h2>
+              <p>{post.data.description}</p>
+            </a>
+          </li>
+        ))}
+      </ul>
     </main>
   </body>
 </html>

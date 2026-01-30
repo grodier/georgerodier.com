@@ -1,11 +1,8 @@
 ---
 import { getCollection, render } from "astro:content";
-import Layout from "@layouts/Layout.astro";
-import Container from "@components/Container/Container.astro";
-import ArticleCTA from "@components/ArticleCTA.astro";
-import ArrowLeftIcon from "@components/icons/ArrowLeftIcon.astro";
+import { Font } from "astro:assets";
+import "../../../styles/styles.css";
 import { formatDate } from "@utils/timeUtils";
-import { slugifyStr } from "@utils/slugify";
 
 export async function getStaticPaths() {
   let postEntries = await getCollection("posts");
@@ -16,53 +13,54 @@ export async function getStaticPaths() {
 }
 
 let { post } = Astro.props;
+let { title, pubDate } = post.data;
 
-let { title, author, description, pubDate, ctaTitle, ctaDescription } =
-  post.data;
-
-let ogUrl = new URL(`/posts/${slugifyStr(title)}.png`, Astro.url.origin).href;
 
 let { Content } = await render(post);
 ---
 
-<Layout title={title} author={author} description={description} ogImage={ogUrl}>
-  <Container class="mt-12 sm:mt-28">
-    <div class="xl:relative">
-      <div class="mx-auto max-w-2xl">
-        <button
-          type="button"
-          aria-label="Go back"
-          class="group mb-8 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 transition lg:absolute lg:-left-5 lg:-mt-2 lg:mb-0 xl:-top-1.5 xl:left-0 xl:mt-0 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0 dark:ring-white/10 dark:hover:border-zinc-700 dark:hover:ring-white/20"
-          onclick="history.back()"
-        >
-          <ArrowLeftIcon
-            class="h-4 w-4 stroke-zinc-500 transition group-hover:stroke-zinc-700 dark:stroke-zinc-500 dark:group-hover:stroke-zinc-400"
-          />
-        </button>
-        <article>
-          <header class="flex flex-col">
-            <h1
-              class="mt-6 text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100"
-            >
-              {title}
-            </h1>
-            <time
-              datetime={pubDate.toDateString()}
-              class="order-first flex items-center text-base text-zinc-400 dark:text-zinc-500"
-            >
-              <span class="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500"
-              ></span>
-              <span class="ml-3">{formatDate(pubDate)}</span>
-            </time>
-          </header>
-          <div class="mt-8 prose dark:prose-invert">
-            <Content />
-          </div>
-        </article>
-        <div class="mt-16">
-          <ArticleCTA heading={ctaTitle} description={ctaDescription} />
-        </div>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <Font cssVariable="--font-synonym" preload />
+    <Font cssVariable="--font-lora" preload />
+    <link 
+      rel="alternate"
+      type="application/rss+xml"
+      title="George Rodier's blog"
+      href={new URL("rss.xml", Astro.site)}
+    />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <title>{title} | George Rodier</title>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a class="site-name" href="/">George Rodier</a>
+        <nav class="site-nav">
+          <a href="/posts">Blog</a>
+          <a href="/subscribe">Subscribe</a>
+        </nav>
       </div>
-    </div>
-  </Container>
-</Layout>
+    </header>
+
+    <main class="container" data-container="narrow">
+      <article class="article flow">
+        <header class="article-header flow">
+          <time class="article-date" datetime={pubDate.toISOString()}>
+            {formatDate(pubDate)}
+          </time>
+          <h1 class="article-title">{title}</h1>
+        </header>
+
+        <div class="article-content">
+          <Content />
+        </div>
+      </article>
+    </main>
+  </body>
+</html>
