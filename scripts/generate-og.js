@@ -25,7 +25,7 @@ async function getPosts() {
       const content = await fs.readFile(path.join(postsDir, file), "utf-8");
       const { data } = matter(content);
       if (!data.title) return null;
-      const id = file.replace(/\.md$/, "");
+      const id = data.slug || file.replace(/\.md$/, "");
       return { id, title: data.title };
     }),
   );
@@ -62,7 +62,6 @@ async function generateOGImages() {
 
   const browser = await puppeteer.launch();
 
-  // Generate OG images for posts
   for (const post of posts) {
     await generateImage(
       browser,
@@ -72,7 +71,6 @@ async function generateOGImages() {
     );
   }
 
-  // Generate OG images for static pages
   for (const page of STATIC_PAGES) {
     await generateImage(browser, outputPath, `${page.id}.png`, page.title);
   }
