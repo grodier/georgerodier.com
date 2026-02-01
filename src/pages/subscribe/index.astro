@@ -21,6 +21,15 @@ const isProd = import.meta.env.PROD;
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <title>Subscribe | George Rodier</title>
+    <meta name="description" content="Subscribe to George Rodier's newsletter for updates on articles, projects, and insights." />
+    <meta property="og:site_name" content="George Rodier" />
+    <meta property="og:title" content="Subscribe" />
+    <meta property="og:description" content="Subscribe to George Rodier's newsletter for updates on articles, projects, and insights." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url.href} />
+    <meta property="og:image" content={new URL("/social-cards/subscribe.png", Astro.site).href} />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:image" content={new URL("/social-cards/subscribe.png", Astro.site).href} />
     <!-- Fathom - beautiful, simple website analytics -->
     {
       isProd && (
