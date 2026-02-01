@@ -20,15 +20,29 @@ const isProd = import.meta.env.PROD;
     <meta name="generator" content={Astro.generator} />
     <Font cssVariable="--font-synonym" preload />
     <Font cssVariable="--font-lora" preload />
+
     <link 
       rel="alternate"
       type="application/rss+xml"
       title="George Rodier's blog"
       href={new URL("rss.xml", Astro.site)}
     />
+
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <title>George Rodier</title>
+
+    <meta name="description" content="The writings, thoughts, projects, and more from George Rodier" />
+    <meta property="og:site_name" content="George Rodier" />
+    <meta property="og:title" content="George Rodier" />
+    <meta property="og:description" content="The writings, thoughts, projects, and more from George Rodier" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url.href} />
+    <meta property="og:image" content={new URL("/social-cards/home.png", Astro.site).href} />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:image" content={new URL("/social-cards/home.png", Astro.site).href} />
+
     <!-- Fathom - beautiful, simple website analytics -->
     {
       isProd && (

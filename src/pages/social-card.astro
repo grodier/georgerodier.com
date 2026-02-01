@@ -1,0 +1,36 @@
+---
+import {Font} from "astro:assets";
+import "../styles/styles.css";
+---
+
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <Font cssVariable="--font-synonym" preload />
+    <Font cssVariable="--font-lora" preload />
+  </head>
+  <body class="social-page">
+    <div class="confined"></div>
+    <div class="social-card-container">
+      <div class="widget-bento-grid">
+        <div class="widget-card social-card" data-bg="purple">
+          <div class="title-section"><h1 class="heading" id="title">George Rodier</h1></div>
+          <div class="social-footer"><span class="site-callout">georgerodier.com</span></div>
+        </div>
+        <div class="widget-card" data-bg="green"></div>
+        <div class="widget-card" data-bg="red"></div>
+        <div class="widget-card" data-bg="blue"></div>
+        <div class="widget-card" data-bg="green"></div>
+        <div class="widget-card" data-bg="orange"></div>
+      </div>
+    </div>
+</html>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const title = params.get("title") || "George Rodier";
+const el = document.getElementById("title");
+document.getElementById("title").innerText = title;
+</script>

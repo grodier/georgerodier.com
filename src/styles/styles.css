@@ -818,4 +818,55 @@
       color: var(--clr-white);
     }
   }
+
+  /* OG Image Template Styles */
+  .social-page {
+    position: relative;
+
+    .confined {
+      width: 1200px;
+      height: 630px;
+    }
+  }
+  .social-card-container {
+    position: absolute;
+    top: -4.8rem;
+    left: -25px;
+    width: 1225px;
+    height: 707px;
+    overflow: hidden;
+  }
+
+  .social-card {
+    height: 550px;
+    width: 1150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .title-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex-grow: 1;
+    }
+
+    .social-footer {
+      margin-top: auto;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .heading {
+      font-size: var(--font-size-heading-xl);
+      text-align: center;
+    }
+
+    .site-callout {
+      font-size: var(--font-size-heading-sm);
+      opacity: 0.8;
+      font-family: var(--ff-heading);
+    }
+  }
 }
