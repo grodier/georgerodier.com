@@ -10,6 +10,9 @@ export default defineConfig({
       exclude: ["@resvg/resvg-js"],
     },
   },
+  devToolbar: {
+    enabled: false,
+  },
   experimental: {
     fonts: [
       {
