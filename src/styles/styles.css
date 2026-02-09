@@ -739,10 +739,11 @@
     }
 
     img {
+      display: block;
       max-width: 100%;
       height: auto;
       border-radius: 8px;
-      margin: 2em 0;
+      margin: 2em auto;
     }
 
     ul,
@@ -787,6 +788,12 @@
       background: none;
       padding: 0;
       color: inherit;
+    }
+
+    hr {
+      margin: 2em 0;
+      border: none;
+      border-top: 2px solid var(--clr-green-700);
     }
   }
 
